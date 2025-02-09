@@ -1,1 +1,5 @@
 /*The CSS file is in charge of the overall appearance of the website (Style)*/
+body{
+    font-family: Verdana;
+    font-size: 2em; /*2em means 300% of the original size*/
+}
