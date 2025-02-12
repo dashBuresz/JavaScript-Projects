@@ -12,20 +12,33 @@ let running = true;
 
 while (running)
 {
-    if (attempts == 5) running = false;
     guess = window.prompt("Guess a number between "+ minNum + "-" + maxNum + "!");
     guess = Number(guess);
-    if (Number.isFinite(guess) && guess >= minNum && guess <= maxNum)
+    if(isNaN(guess))
     {
-        console.log("Guess is valid");
-    }else
-    {
-        console.log("Please enter a valid number");
+        window.alert("Please enter a valid number");
+        console.log("Guess not a number");
     }
-    //console.log("the correct answer: ", typeof solution, solution);
-    if (guess == solution) window.alert("Your guess ", guess, "is correct, congrats!");
-    else window.alert("Incorrect, try again. ");
+    else if (guess < minNum || guess > maxNum)
+    {
+        window.alert("Please enter a valid number");
+        console.log("Guess out of range");
+    }
+    else {
+        attempts++;
+        if(guess < solution)
+        {
+            window.alert("Too low, try again");
+        }
+        else if (guess > solution){
+            window.alert("Too high, try again");
+        }
+        else if (guess == solution)
+            {
+                window.alert("CORRECT, The answer was " + solution + " it took you " + attempts + " attenpts");
+                running = false;
+            }
+        
+    }
     console.log(typeof guess, guess);
-    attempts++;
-    running = false;
 }
